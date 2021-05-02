@@ -11,7 +11,7 @@ void main() {
   var a=10;
   print(a/2);
   if ((10*2) == 20) print('ok');
-  if ((a%2) == 0) print('ok');
+  if ((a%2) == (10*0)) print('ok');
   a+=1;
   a-=1;
   a*=2;
