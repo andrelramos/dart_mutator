@@ -1,3 +1,12 @@
+//
+// This mutator will change arithmetic operations on source code. For example:
+// 1 + 1 will be 1 - 1
+// 1 - 1 will be 1 + 1
+// 1 * 1 will be 1 / 1
+// 1 / 1 will be 1 * 1
+// 1 % 1 will be 1 * 1
+//
+
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/ast/visitor.dart';

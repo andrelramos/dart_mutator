@@ -1,3 +1,7 @@
+//
+// Create temporary files to save mutants then run the tests
+//
+
 import 'dart:io';
 
 import 'package:dart_mutator/mutators/mutator.dart';
@@ -11,8 +15,11 @@ class Sandbox {
     sandboxDir = Directory(getMutatorSandboxPath());
   }
 
-  void create() {
-    ;
+  void create() async {
+    // Create sandbox temporary file
+    if(!await sandboxDir.exists()) {
+      sandboxDir.createTemp();
+    }
   }
 
   String getMutatorSandboxPath() {

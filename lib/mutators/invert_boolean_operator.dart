@@ -1,3 +1,8 @@
+//
+// This mutator will invert boolean operations on source code. For example:
+// 1 == 1 will be !(1 == 1)
+//
+
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/standard_ast_factory.dart';
 import 'package:analyzer/dart/ast/token.dart';

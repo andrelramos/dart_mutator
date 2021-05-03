@@ -5,6 +5,10 @@ import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/analysis/utilities.dart';
 import 'mutators/mutator.dart';
 
+//
+// MutantCreator is the responsible for handle the creation of mutants on source code through the mutators
+//
+
 class MutantCreator {
   List<Mutator> mutators;
   File sourceCode;
