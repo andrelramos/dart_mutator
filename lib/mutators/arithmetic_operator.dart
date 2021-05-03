@@ -1,10 +1,11 @@
 import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
+import 'package:dart_mutator/mutators/mutator.dart';
 import 'package:dart_mutator/singleton.dart';
 
 
-class ArithmeticOperatorMutator extends RecursiveAstVisitor<void> {
+class ArithmeticOperatorVisitor extends RecursiveAstVisitor<void> {
   final List<TokenType> _operators = [
     TokenType.PLUS,
     TokenType.MINUS,
@@ -40,4 +41,8 @@ class ArithmeticOperatorMutator extends RecursiveAstVisitor<void> {
   // a-=1;
   // a*=2;
   // a%=2;
+}
+
+class ArithmeticOperatorMutator extends Mutator {
+  ArithmeticOperatorMutator() : super('ArithmeticOperatorMutator', ArithmeticOperatorVisitor());
 }

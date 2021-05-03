@@ -18,7 +18,7 @@ final File sourceMemoryFile = MemoryFileSystem().file('test.dart')..writeAsStrin
 
 void main() {
   test('invert boolean operations', () async {
-    final creator = MutantCreator(sourceMemoryFile, [InvertBooleanOperations()]);
+    final creator = MutantCreator(sourceMemoryFile, [InvertBooleanOperationsMutator()]);
     final result = await creator.mutate();
     expect(result, "void main() {if (!(3 < 4)) print('ok'); if (!(3 < 4)) print('ok'); if (!(5 == 5)) print('ok');}");
   });

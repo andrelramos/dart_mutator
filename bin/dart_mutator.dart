@@ -8,8 +8,8 @@ void main(List<String> arguments) {
   var file = File("/home/andrebrenda/dev/dart_mutator/bin/example.dart");
 
   var mutators = [
-    InvertBooleanOperations(),
-    //ArithmeticOperatorMutator()
+    InvertBooleanOperationsMutator(),
+    ArithmeticOperatorMutator()
   ];
 
 }

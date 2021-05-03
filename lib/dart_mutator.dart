@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/analysis/results.dart';
 import 'package:analyzer/dart/analysis/utilities.dart';
-import 'package:analyzer/dart/ast/ast.dart';
+import 'mutators/mutator.dart';
 
 class MutantCreator {
-  List<AstVisitor> mutators;
+  List<Mutator> mutators;
   File sourceCode;
 
   MutantCreator(this.sourceCode, this.mutators);
@@ -16,7 +16,7 @@ class MutantCreator {
     final parsedSource = parseDartCode(await sourceCode.readAsString());
 
     // Add mutators on source code to generate the mutation code
-    mutators.forEach((mutator) => parsedSource.unit.accept(mutator));
+    mutators.forEach((mutator) => parsedSource.unit.accept(mutator.visitor));
 
     // Return mutated
     return parsedSource.unit.toString();

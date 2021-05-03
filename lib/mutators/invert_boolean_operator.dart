@@ -2,11 +2,11 @@ import 'package:analyzer/dart/ast/ast.dart';
 import 'package:analyzer/dart/ast/standard_ast_factory.dart';
 import 'package:analyzer/dart/ast/token.dart';
 import 'package:analyzer/dart/ast/visitor.dart';
+import 'package:dart_mutator/mutators/mutator.dart';
 
 import 'package:dart_mutator/singleton.dart';
 
-
-class InvertBooleanOperations extends RecursiveAstVisitor<void> {
+class InvertBooleanOperationsVisitor extends RecursiveAstVisitor<void> {
   @override
   void visitIfStatement(IfStatement node) {
     final op = Token(TokenType.BANG, node.condition.offset);
@@ -15,4 +15,8 @@ class InvertBooleanOperations extends RecursiveAstVisitor<void> {
     // ignore: deprecated_member_use
     node.condition = resultOp;
   }
+}
+
+class InvertBooleanOperationsMutator extends Mutator {
+  InvertBooleanOperationsMutator() : super('InvertBooleanOperationsMutator', InvertBooleanOperationsVisitor());
 }
