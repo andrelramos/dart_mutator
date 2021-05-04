@@ -24,7 +24,8 @@ const mainTestSource = '''
   ''';
 
 void main() async {
-  // Creating a fake project directory
+
+  // Create a fake project directory
   final rootPath = Directory('${Directory.systemTemp.path}').createTempSync('sandbox_test');
   final srcPath = Directory('${rootPath.path}/src')..createSync();
   final testPath = Directory('${rootPath.path}/test')..createSync();
@@ -36,7 +37,7 @@ void main() async {
   final mainTestFile = File('${testPath.path}/main_test.dart')
     ..createSync()
     ..writeAsStringSync(mainTestSource);
-    
+  
   // Run tests
   test('creating sandbox environment', () async {
     var testSandbox = Sandbox(rootPath, ArithmeticOperatorMutator());
@@ -55,5 +56,8 @@ void main() async {
     }
   });
 
-  // TODO Remove fake project directory
+  tearDownAll(() {
+    // Delete root directory after tests run
+    rootPath.deleteSync(recursive: true);
+  });
 }
